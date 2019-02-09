@@ -1,0 +1,38 @@
+.conversation {
+  overflow: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.conversation .message {
+  padding: 10px;
+  width: 90%;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.conversation .message:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.conversation .sent-message {
+  align-self: flex-end;
+  background: hsla(0, 0%, 50.2%, 0.6);
+}
+
+.conversation .received-message {
+  align-self: flex-start;
+  background: hsla(262.3, 72.1%, 39.4%, 0.8);
+}
+
+.conversation .message .user {
+  font-size: 0.75rem;
+}
+
+.conversation .message .date {
+  font-size: 0.75rem;
+  align-self: flex-end;
+}
