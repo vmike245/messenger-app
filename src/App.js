@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import { MessageList } from './components/messageList'
 
-const SERVER_ADDRESS = 'http://localhost:5000'
+// const SERVER_ADDRESS = 'http://localhost:5000';
+const SERVER_ADDRESS = 'https://guild-messenger-app.herokuapp.com';
 
 const postMessage = ({ message, user }) => {
   return fetch(`${SERVER_ADDRESS}/api/messages`,
