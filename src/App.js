@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import './App.css';
 import { MessageList } from './components/messageList'
 
+const SERVER_ADDRESS = 'http://localhost:5000'
+
 const postMessage = ({ message, user }) => {
-  return fetch('http://localhost:5000/api/messages',
+  return fetch(`${SERVER_ADDRESS}/api/messages`,
     { method: "POST",
       headers: {
         'Content-Type': 'application/json',
@@ -15,7 +17,7 @@ const postMessage = ({ message, user }) => {
 }
 
 const getMessages = () => {
-  return fetch('http://localhost:5000/api/messages')
+  return fetch(`${SERVER_ADDRESS}/api/messages`)
     .then((res) => res.json())
     .catch((err) => console.log(err))
 }
@@ -63,11 +65,17 @@ class App extends Component {
     }
   }
 
+  fetchMessages = () => {
+    setTimeout(() =>{
+      getMessages()
+      .then((messages) => {
+        this.setState({ messages })
+        this.fetchMessages();
+      });
+    }, 1000)
+  }
   componentDidMount() {
-    getMessages()
-      .then((messages) => this.setState({
-        messages
-      }));
+     this.fetchMessages()
   }
 
 //https://stackoverflow.com/questions/37620694/how-to-scroll-to-bottom-in-react
