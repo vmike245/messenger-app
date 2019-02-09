@@ -79,7 +79,6 @@ class App extends Component {
      this.fetchMessages()
   }
 
-//https://stackoverflow.com/questions/37620694/how-to-scroll-to-bottom-in-react
   render() {
     const { user, messages, currentMessage } = this.state;
     return (

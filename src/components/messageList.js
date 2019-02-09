@@ -4,6 +4,7 @@ import './messageList.css';
 export class MessageList extends Component {
   lastMessage = null;
 
+  //https://stackoverflow.com/questions/37620694/how-to-scroll-to-bottom-in-react
   scrollToBottom = () => {
     if (this.lastMessage) {
       this.lastMessage.scrollIntoView({ behavior: "smooth" });
