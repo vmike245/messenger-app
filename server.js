@@ -24,7 +24,7 @@ app.post('/api/messages', ({ body: { user, message } }, res) => {
 });
 
 // Create link to React build directory
-var distDir = __dirname + '/build';
+var distDir = __dirname + '/build/';
 app.use(express.static(distDir));
 
 app.listen(portNumber, () =>
