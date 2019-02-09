@@ -21,11 +21,13 @@
 .conversation .sent-message {
   align-self: flex-end;
   background: hsla(0, 0%, 50.2%, 0.6);
+  color: hsl(0, 0%, 14.1%);
 }
 
 .conversation .received-message {
   align-self: flex-start;
   background: hsla(262.3, 72.1%, 39.4%, 0.8);
+  color: hsl(0, 0%, 83.1%);
 }
 
 .conversation .message .user {
