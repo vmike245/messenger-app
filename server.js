@@ -18,8 +18,8 @@ app.get('/api/messages', (_, res) => {
   return res.send(messages);
 });
 
-app.post('/api/messages', ({ body }, res) => {
-  messages = [ ...messages, { ...body, date: new Date().toISOString() }];
+app.post('/api/messages', ({ body: { user, message } }, res) => {
+  messages = [ ...messages, { user, message, date: new Date().toISOString() }];
   res.status(201).send(messages);
 });
 
