@@ -83,7 +83,16 @@ class App extends Component {
     const { user, messages, currentMessage } = this.state;
     return (
       <div className='chat-container'>
-        <MessageList user={user} messages={messages}></MessageList>
+        {
+          messages.length === 0 &&
+          <div className='no-messages'>
+            <p>There are no messages in this conversation. Send one below to be the first!</p>
+          </div>
+        }
+        {
+          messages.length > 0 &&
+          <MessageList user={user} messages={messages}></MessageList>
+        }
         <form className='input-form' onSubmit={this.sendMessage}>
           <textarea value={currentMessage} onChange={this.updateCurrentMessage} onKeyDown={this.onEnterPress}>
           </textarea>
