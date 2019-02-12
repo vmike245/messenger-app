@@ -10,11 +10,11 @@ export const postMessage = ({ message, user }) => {
     body: JSON.stringify({ user, message }),
   })
     .then(res => res.json())
-    .catch(err => console.log(err));
+    .catch(err => { throw new Error(err) });
 };
 
 export const getMessages = () => {
   return fetch(`${SERVER_ADDRESS}/api/messages`)
     .then(res => res.json())
-    .catch(err => console.log(err));
+    .catch(err => { throw new Error(err) });
 };

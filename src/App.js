@@ -11,7 +11,7 @@ class App extends Component {
     if (savedUser) {
       user = savedUser;
     } else {
-      const newUsername = new Date().valueOf();
+      const newUsername = new Date().valueOf().toString();
       user = newUsername;
       localStorage.setItem('username', newUsername);
     }
@@ -64,7 +64,12 @@ class App extends Component {
   fetchMessages = () => {
     return getMessages()
       .then(messages => {
-        this.setState({ messages });
+        // Only update the messages if there is a new one or the message array is empty
+        const lastItemInReturnedMessages = messages[messages.length - 1];
+        const lastItemInCurrentMessages = this.state.messages[this.state.messages.length - 1];
+        if (!lastItemInCurrentMessages || lastItemInReturnedMessages.id !== lastItemInCurrentMessages.id) {
+          this.setState({ messages });
+        }
       })
   }
 
@@ -79,7 +84,7 @@ class App extends Component {
         )}
         {messages.length > 0 && <MessageList user={user} messages={messages} />}
         <form className='input-form' onSubmit={this.sendMessage}>
-          <textarea value={currentMessage} onChange={this.updateCurrentMessage} onKeyDown={this.onEnterPress} />
+          <textarea className='text-input' value={currentMessage} onChange={this.updateCurrentMessage} onKeyDown={this.onEnterPress} />
           <button type='submit' onClick={this.sendMessage}>
             Send
           </button>

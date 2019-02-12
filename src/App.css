@@ -4,11 +4,19 @@
   align-items: center;
   height: 100vh;
   justify-content: flex-end;
+  padding: 10px;
 }
 
 .chat-container .input-form {
   margin-top: 10px;
   margin-bottom: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.chat-container .text-input {
+  flex: 1;
 }
 
 .chat-container .no-messages {
