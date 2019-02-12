@@ -1,5 +1,5 @@
 const SERVER_PORT = process.env.PORT || 5000;
-const SERVER_ADDRESS = process.env.API_URL || `http://localhost:${SERVER_PORT}`;
+const SERVER_ADDRESS = process.env.DEV ? `http://localhost:${SERVER_PORT}` : 'https://guild-messenger-app.herokuapp.com';
 
 export const postMessage = ({ message, user }) => {
   return fetch(`${SERVER_ADDRESS}/api/messages`, {
